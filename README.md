@@ -9,4 +9,4 @@ A dynamic memory allocator written in C.
 - free()/realloc() clones.
 - a custom hexdump function.
 
-<img src="screenshots/screenshot.png">
+![alt text](https://github.com/Hab5/malloc/blob/master/hexdump.png?raw=true)
