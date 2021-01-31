@@ -78,7 +78,7 @@ void *find_block(size_t size, t_heap *block, size_t page_size, int heap_type) {
         return (NULL);
     defrag(block);
 
-    while (block->next) { /* Try to find a free block big enough for the data */
+    while (block->next) {
         if (block->free && block->size >= size) {
             block->free = FALSE;
             block->data = (char *)block + sizeof(t_heap);
@@ -86,10 +86,8 @@ void *find_block(size_t size, t_heap *block, size_t page_size, int heap_type) {
         }
         block = block->next;
     }
-
-    if ((block->prev->size_from_origin + size + sizeof(t_heap)) >= page_size) // Heap Overflow
+    if ((block->prev->size_from_origin + size + sizeof(t_heap)) >= page_size)
         return(NULL);
-    // Else, populate the last block (which is empty)
     block->free = FALSE;
     block->size = size;
     block->size_from_origin = size + sizeof(t_heap) + block->prev->size_from_origin;
@@ -165,8 +163,7 @@ void *allocate(size_t size, int heap) {
             return init_heap(size, &g_arena.large, size/PAGESIZE+1, LARGE);
         else 
             return allocate_large(size, g_arena.large, size/PAGESIZE+1);
-        ;
-    } //TODO
+    }
  
     return NULL;
 }
@@ -179,6 +176,6 @@ void *ft_malloc(size_t size) {
     else if (ALIGN(size <= SMALL_LIMIT))
         return (allocate(ALIGN(size), SMALL));
     else
-        return allocate(ALIGN(size), LARGE); // TODO LARGE
+        return allocate(ALIGN(size), LARGE);
     return NULL;
 }
