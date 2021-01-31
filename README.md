@@ -7,6 +7,6 @@ A dynamic memory allocator written in C.
 - Defragmentation of the heap.
 - Multiple heaps for different allocation sizes, useful to optimize operations and limit system calls.
 - free()/realloc() clones.
-- a custom hexdump function.
+- A custom hexdump function.
 
 ![alt text](https://github.com/Hab5/malloc/blob/master/hexdump.png?raw=true)
